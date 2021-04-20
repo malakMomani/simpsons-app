@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>favorite</title>
+</head>
+
+<body>
+    <header>
+        <%- include('./layout/nav.ejs')%>
+    </header>
+    <main id="co">
+        <% quotes.forEach(quote =>{%>
+            <%if(quote.character_direction === 'Right'){%>
+                <section class="left">
+
+                    <img src="<%=quote.image%>" alt="">
+
+                    <h2>
+                        <%= quote.character_name %>
+                    </h2>
+                    <p>
+                        <%= quote.quote %>
+                    </p>
+                    <form action="/favorite-quotes/<%=quote.id%>" method="post">
+                        <input type="submit" value="View Details">
+                    </form>
+                </section>
+
+                <%} %>
+                    <% });%>
+                        <% quotes.forEach(quote =>{%>
+                            <%if(quote.character_direction === 'Right'){%>
+                                <section class="left">
+
+                                    <img src="<%=quote.image%>" alt="">
+
+                                    <h2>
+                                        <%= quote.character_name %>
+                                    </h2>
+                                    <p>
+                                        <%= quote.quote %>
+                                    </p>
+                                    <form action="/favorite-quotes/<%=quote.id%>" method="post">
+                                        <input type="submit" value="View Details">
+                                    </form>
+                                </section>
+
+                                <%} %>
+                                    <% });%>
+    </main>
+
+</body>
+
+</html>

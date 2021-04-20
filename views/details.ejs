@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Details</title>
+</head>
+
+<body>
+    <header>
+        <%- include('./layout/nav.ejs')%>
+    </header>
+    <main>
+        <% quotes.forEach(quote =>{%>
+            <section id="details">
+                <h2>
+                    <%= quote.character_name %>
+                </h2>
+                <p>
+                    <%= quote.quote %>
+                </p>
+                <img src="<%=quote.image%>" alt="">
+                <form action="/favorite-quotes/<%=quote.id%>?_method=PUT" method="post">
+                    <textarea name="quote" id="quote" cols="30" rows="10">
+                      <%= quote.quote %>
+                    </textarea>
+                    <br />
+                    <input type="submit" value="Update">
+                </form>
+                <form action="/favorite-quotes/<%=quote.id%>?_method=DELETE" method="post">
+                    <input type="submit" value="Delete">
+                </form>
+            </section>
+
+            <% });%>
+    </main>
